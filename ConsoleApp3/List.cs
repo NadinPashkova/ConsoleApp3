@@ -54,7 +54,7 @@ namespace ConsoleApp3
 			}
 
 			if (index == 0)
-				_headNode = _headNode.NextNode
+				_headNode = _headNode.NextNode;
 
 
 

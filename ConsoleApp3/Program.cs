@@ -10,6 +10,17 @@ namespace ConsoleApp3
 	{
 		static void Main(string[] args)
 		{
+		    var list = new ListNode() {Value = 5};
+
+		    list.Add(6);
+
+		    list.Add(7);
+
+		    list.Delete(0);
+
+		    System.Console.WriteLine("print all element");
+
+		    list.Print();
 		}
 	}
 }

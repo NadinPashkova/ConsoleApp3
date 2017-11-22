@@ -8,9 +8,8 @@ namespace ConsoleApp3
 {
 	class ListNode
 	{
-		public int Index { get; set; }
-
 		public int Value { get; set; }
+
 		public ListNode NextNode { get; set; }
 	}
 }

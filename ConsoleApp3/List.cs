@@ -13,11 +13,10 @@ namespace ConsoleApp3
 		private ListNode _lastNode;
 
 
-
 		public List(int value)
 		{
 
-			_headNode = new ListNode() { Value = value, Index = 0 };
+			_headNode = new ListNode() { Value = value};
 
 			_lastNode = _headNode;
 
@@ -53,18 +52,14 @@ namespace ConsoleApp3
 				return;
 			}
 
-			if (index == 0)
-				_headNode = _headNode.NextNode;
+		    if (index == 0)
+		    {
+		        _headNode = _headNode.NextNode;
+		        return;
+		    }
 
 
-
-
-
-
-
-
-
-
+		    this[index - 1].NextNode = this[index + 1];
 
 		}
 
@@ -73,8 +68,11 @@ namespace ConsoleApp3
 
 		public ListNode this[int index]
 		{
+            
 			get
 			{
+			    var count = 0;
+
 				if (index < 0 || index > _lastNode.Index)
 				{
 					Console.WriteLine($"there is no node with index {index}");
@@ -83,9 +81,10 @@ namespace ConsoleApp3
 
 				var node = _headNode;
 
-				while (node.Index != index)
+				while (count != index)
 				{
 					node = node.NextNode;
+                    count++;
 				}
 
 				return node;

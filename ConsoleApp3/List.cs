@@ -12,29 +12,46 @@ namespace ConsoleApp3
 
 		private ListNode _lastNode;
 
+	    public int Counter { get; set ; }
+
 
 		public List(int value)
 		{
+		    Counter = 1;
 
-			_headNode = new ListNode() { Value = value};
+            _headNode = new ListNode() { Value = value};
 
 			_lastNode = _headNode;
 
 		}
 
-		public void Add(int value)
+		public void AddToTheEnd(int value)
 		{
-			_lastNode.NextNode = new ListNode { Value = value, Index = _lastNode.Index + 1 };
 
+            var node = new ListNode { Value = value };
+
+            _lastNode.NextNode = node;
+
+		    _lastNode = node;
+
+		    Counter++;
 		}
 
+	    public void AddToTheBegining(int value)
+	    {
 
-		public void Delete(int index)
+	        var node = new ListNode { Value = value };
+
+	        node.NextNode = _headNode;
+
+	        _headNode = node;
+	    }
+
+        public void Delete(int index)
 		{
 			var node = this[index];
-
 		
-			if (index < 0 || index > _lastNode.Index)
+			if (index < 0 || index > Counter - 1)
 			{
 				Console.WriteLine("Index is out of range");
 				return;
@@ -58,22 +75,16 @@ namespace ConsoleApp3
 		        return;
 		    }
 
-
 		    this[index - 1].NextNode = this[index + 1];
-
 		}
-
-
-
 
 		public ListNode this[int index]
 		{
-            
-			get
+ 			get
 			{
 			    var count = 0;
 
-				if (index < 0 || index > _lastNode.Index)
+				if (index < 0 || index > Counter - 1)
 				{
 					Console.WriteLine($"there is no node with index {index}");
 					return null;
@@ -89,7 +100,6 @@ namespace ConsoleApp3
 
 				return node;
 			}
-			
 		}
 
 		public void Print()
@@ -106,6 +116,5 @@ namespace ConsoleApp3
 					Console.WriteLine(node.Value);
 			}
 		}
-
 	}
 }
